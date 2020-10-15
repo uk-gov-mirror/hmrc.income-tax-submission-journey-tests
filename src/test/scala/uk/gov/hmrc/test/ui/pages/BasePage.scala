@@ -19,9 +19,12 @@ package uk.gov.hmrc.test.ui.pages
 import java.util
 
 import io.cucumber.datatable.DataTable
-import org.scalatest.Matchers
+import org.openqa.selenium.By
+import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-trait BasePage extends Matchers {
+
+trait BasePage extends Matchers with BrowserDriver {
   val url: String = ""
 
   var redirectUrl: String = ""
@@ -62,4 +65,8 @@ trait BasePage extends Matchers {
       }
     }
   }
+
+  def clickOn(selector: By) =
+    driver.findElement(selector).click()
+
 }

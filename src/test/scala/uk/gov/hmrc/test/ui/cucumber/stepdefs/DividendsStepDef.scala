@@ -11,6 +11,10 @@ class DividendsStepDef extends BaseStepDef {
     )).click()
   }
 
+  Given ("""^the user clicks on the (.*) link$^""") { linkName: String =>
+    CommonPage.clickOnLink(linkName)
+  }
+
   Then("""^the user should be on the received UK dividends page$""") { () =>
     driver.getCurrentUrl should be(CommonPage.url + "/dividends/dividend-uk-status")
   }
@@ -25,6 +29,10 @@ class DividendsStepDef extends BaseStepDef {
 
   When ("""^the user clicks the yes radio button$""") { () =>
     driver.findElement(By.id("dividend-uk-status")).click()
+  }
+
+  When ("""^the user clicks the (.*) radio button$""") { radioButtonBoolean: String =>
+    CommonPage.clickOnRadioButton(radioButtonBoolean)
   }
 
   Then ("""^the user should be on the authorised unit trusts, investment companies/trusts page$""") { () =>
